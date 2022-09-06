@@ -137,6 +137,12 @@ func main() {
 			EnvVar: "PLUGIN_PROXY_KEY_PATH,PROXY_SSH_KEY_PATH,INPUT_PROXY_KEY_PATH",
 		},
 		cli.StringFlag{
+			Name:   "proxy.type",
+			Usage:  "proxy type",
+			EnvVar: "socks5/socks4/ssh",
+			Value:  "socks5",
+		},
+		cli.StringFlag{
 			Name:   "proxy.username",
 			Usage:  "connect as user of proxy",
 			EnvVar: "PLUGIN_PROXY_USERNAME,PLUGIN_PROXY_USER,PROXY_SSH_USERNAME,INPUT_PROXY_USERNAME",
@@ -259,6 +265,7 @@ func run(c *cli.Context) error {
 				Password:          c.String("proxy.password"),
 				Passphrase:        c.String("proxy.ssh-passphrase"),
 				Fingerprint:       c.String("proxy.fingerprint"),
+				Type:              c.String("proxy.type"),
 				Server:            c.String("proxy.host"),
 				Port:              c.String("proxy.port"),
 				Timeout:           c.Duration("proxy.timeout"),
