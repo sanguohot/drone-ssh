@@ -81,6 +81,7 @@ func (p Plugin) exec(host string, wg *sync.WaitGroup, errChannel chan error) {
 		Fingerprint:       p.Config.Fingerprint,
 		UseInsecureCipher: p.Config.UseInsecureCipher,
 		Proxy: easyssh.DefaultConfig{
+			Type:              p.Config.Proxy.Type,
 			Server:            p.Config.Proxy.Server,
 			User:              p.Config.Proxy.User,
 			Password:          p.Config.Proxy.Password,
