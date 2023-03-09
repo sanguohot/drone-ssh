@@ -138,8 +138,8 @@ func main() {
 		},
 		cli.StringFlag{
 			Name:   "proxy.type",
-			Usage:  "proxy type",
-			EnvVar: "socks5/socks4/ssh",
+			Usage:  "proxy type, supported socks5/socks4/ssh, default socks5",
+			EnvVar: "PLUGIN_PROXY_TYPE,INPUT_PROXY_TYPE",
 			Value:  "socks5",
 		},
 		cli.StringFlag{
@@ -275,6 +275,8 @@ func run(c *cli.Context) error {
 		},
 		Writer: os.Stdout,
 	}
-
+	if plugin.Config.Proxy.Type == "" {
+		plugin.Config.Proxy.Type = "socks5"
+	}
 	return plugin.Exec()
 }

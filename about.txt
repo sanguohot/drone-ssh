@@ -1,0 +1,27 @@
+docker run --rm \
+  -e PLUGIN_HOST="10.7.69.2" \
+  -e PLUGIN_PORT=33022 \
+  -e PLUGIN_USERNAME=develop \
+  -e PLUGIN_KEY="$(cat ${HOME}/.ssh/id_rsa)" \
+  -e PLUGIN_PROXY_HOST="202.103.240.158" \
+  -e PLUGIN_PROXY_PORT=22011 \
+  -e PLUGIN_PROXY_TYPE=socks5 \
+  -e PLUGIN_PROXY_USERNAME="2924668128298990" \
+  -e PLUGIN_PROXY_PASSWORD="Arn8JUUUHHh2UZLL*" \
+  appleboy/drone-ssh:socks-v2
+
+
+docker run --rm \
+  -e PLUGIN_HOST="172.16.33.37" \
+  -e PLUGIN_PORT=22 \
+  -e PLUGIN_USERNAME=jsxc \
+  -e PLUGIN_PASSWORD="$(cat /root/jsxc_pwd)" \
+  -e PLUGIN_PROXY_HOST="dev.gxszjf.com" \
+  -e PLUGIN_PROXY_TYPE=socks5 \
+  -e PLUGIN_PROXY_PORT=20006 \
+  -e PLUGIN_PROXY_USERNAME="2924668128298990" \
+  -e PLUGIN_PROXY_PASSWORD="Arn8JUUUHHh2UZLL*" \
+  appleboy/drone-ssh:socks-v2
+
+
+drone --user develop --password "develop@123" --host "10.7.69.2" --port 33022 --proxy.username "10.7.69.2" --proxy.password "Arn8JUUUHHh2UZLL*" --proxy.port 22011 --proxy.host "202.103.240.158" --proxy.type socks5
